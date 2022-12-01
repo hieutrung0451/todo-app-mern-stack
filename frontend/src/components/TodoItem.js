@@ -1,19 +1,8 @@
 import React from "react";
 
-const TodoItem = ({
-  id,
-  title,
-  done,
-  onDeleteTask,
-  onUpdateTask,
-  onDoneTask,
-}) => {
+const TodoItem = ({ id, title, done, onDeleteTask, onDoneTask }) => {
   const handleDeleteTask = () => {
     onDeleteTask(id);
-  };
-
-  const handleUpdateTask = () => {
-    onUpdateTask(id);
   };
 
   const handleDoneTask = () => {
@@ -38,9 +27,6 @@ const TodoItem = ({
         {title}
       </label>
       <div className="btn-group">
-        <button type="button" className="btn">
-          <i className="bi bi-pen" onClick={handleUpdateTask}></i>
-        </button>
         <button type="button" className="btn">
           <i className="bi bi-trash" onClick={handleDeleteTask}></i>
         </button>

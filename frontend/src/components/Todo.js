@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
 
@@ -29,8 +31,6 @@ const Todo = () => {
     setTaskList(listTaskTemp);
   };
 
-  const updateTaskHandler = () => {};
-
   const deleteTaskHandler = (id) => {
     const listTaskTemp = [...taskList];
     const deleteTasks = listTaskTemp.filter((item) => item.id !== id);
@@ -42,7 +42,6 @@ const Todo = () => {
     const doneTasks = listTaskTemp.map((item) =>
       item.id === id ? { ...item, done: !item.done } : item
     );
-
     setTaskList(doneTasks);
   };
 
@@ -67,6 +66,7 @@ const Todo = () => {
       </ul>
       <div className="text-danger">Task left: {taskList.length}</div>
       <TodoForm onAddTask={addTaskHandler} />
+      <ToastContainer />
     </div>
   );
 };

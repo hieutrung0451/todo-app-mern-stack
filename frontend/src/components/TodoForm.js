@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
 
 const TodoForm = ({ onAddTask, onDeleteTask, id }) => {
   const [title, setTitle] = useState("");
@@ -18,6 +19,7 @@ const TodoForm = ({ onAddTask, onDeleteTask, id }) => {
     };
 
     onAddTask(newTask);
+    toast("Add new task success");
     setTitle("");
   };
 
