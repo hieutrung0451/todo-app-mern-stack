@@ -14,6 +14,7 @@ const TodoForm = ({ onAddTask, onDeleteTask, id }) => {
     const newTask = {
       id: uuidv4(),
       title: title,
+      done: false,
     };
 
     onAddTask(newTask);

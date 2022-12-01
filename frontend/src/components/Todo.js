@@ -6,14 +6,17 @@ const DATA = [
   {
     id: 1,
     title: "Homework",
+    done: true,
   },
   {
     id: 2,
     title: "Clean House",
+    done: false,
   },
   {
     id: 3,
     title: "Read Book",
+    done: false,
   },
 ];
 
@@ -34,6 +37,15 @@ const Todo = () => {
     setTaskList(deleteTasks);
   };
 
+  const doneTaskHandler = (id) => {
+    const listTaskTemp = [...taskList];
+    const doneTasks = listTaskTemp.map((item) =>
+      item.id === id ? { ...item, done: !item.done } : item
+    );
+
+    setTaskList(doneTasks);
+  };
+
   return (
     <div className="container d-flex flex-column align-items-center mt-5">
       <h1>To do App</h1>
@@ -46,7 +58,9 @@ const Todo = () => {
               key={item.id}
               id={item.id}
               title={item.title}
+              done={item.done}
               onDeleteTask={deleteTaskHandler}
+              onDoneTask={doneTaskHandler}
             />
           ))
         )}

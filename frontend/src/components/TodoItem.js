@@ -1,12 +1,23 @@
 import React from "react";
 
-const TodoItem = ({ id, title, onDeleteTask, onUpdateTask }) => {
+const TodoItem = ({
+  id,
+  title,
+  done,
+  onDeleteTask,
+  onUpdateTask,
+  onDoneTask,
+}) => {
   const handleDeleteTask = () => {
     onDeleteTask(id);
   };
 
   const handleUpdateTask = () => {
     onUpdateTask(id);
+  };
+
+  const handleDoneTask = () => {
+    onDoneTask(id);
   };
 
   return (
@@ -16,8 +27,14 @@ const TodoItem = ({ id, title, onDeleteTask, onUpdateTask }) => {
         type="checkbox"
         defaultValue
         id="flexCheckDefault"
+        defaultChecked={done}
+        onChange={handleDoneTask}
       />
-      <label className="form-check-label" htmlFor="flexCheckDefault">
+      <label
+        className="form-check-label"
+        htmlFor="flexCheckDefault"
+        style={{ textDecoration: done ? "line-through" : null }}
+      >
         {title}
       </label>
       <div className="btn-group">
